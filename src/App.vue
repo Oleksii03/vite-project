@@ -4,7 +4,7 @@ import { API_KEY, BASE_URL } from "./constants";
 import WeatherSummary from "./components/WeatherSummary.vue";
 import Highlights from "./components/Highlights.vue";
 
-const city = ref("Chernihiv");
+const city = ref(" ");
 const weatherInfo = ref(null);
 
 function getWeather() {
