@@ -8,6 +8,8 @@ defineProps({
 const count = ref(0);
 </script>
 
+<!-- ------------------ -->
+
 <template>
   <h1>{{ msg }}</h1>
 
@@ -15,6 +17,8 @@ const count = ref(0);
     <button type="button" @click="count++">count is {{ count }}</button>
   </div>
 </template>
+
+<!-- ------------------- -->
 
 <style scoped>
 .read-the-docs {
