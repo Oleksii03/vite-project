@@ -1,6 +1,16 @@
 <script setup></script>
 
-<template></template>
+<template>
+  <div class="summary">
+    <div class="pic-main"></div>
+    <div class="weather">
+      <div class="temp">14 °C</div>
+      <div class="weather-desc text-block">Thunderstorm</div>
+    </div>
+    <div class="city text-block">Paris, FR</div>
+    <div class="date text-block">Thu, March 16, 2023</div>
+  </div>
+</template>
 
 <style scoped lang="scss">
 @import "../assets/styles/main.scss";
@@ -12,6 +22,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: contain;
+  background-image: url("../assets/img/weather-main/thunderstorm.png");
 }
 
 .city {
@@ -34,19 +45,19 @@
   padding-left: 24px;
   padding-bottom: 8px;
   font-size: 14px;
-}
 
-&::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  margin-right: 6px;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: contain;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+  }
 }
 
 .weather-desc {
