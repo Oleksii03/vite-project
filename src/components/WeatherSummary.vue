@@ -1,16 +1,29 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  weatherInfo: Object,
+});
+</script>
+
+<!-- -----template------- -->
 
 <template>
-  <div class="summary">
-    <div class="pic-main"></div>
+  <div v-if="weatherInfo?.weather" class="summary">
+    <div class="pic-main">{{ weatherInfo?.weather[0].main.toUpperCase() }}</div>
     <div class="weather">
-      <div class="temp">14 °C</div>
-      <div class="weather-desc text-block">Thunderstorm</div>
+      <div class="temp">{{ Math.round(weatherInfo?.main?.temp) }} °C</div>
+      <div class="weather-desc text-block">
+        {{ weatherInfo?.weather[0].description }}
+      </div>
     </div>
-    <div class="city text-block">Paris, FR</div>
+    <div class="city text-block">
+      {{ `${weatherInfo?.name} ${weatherInfo?.sys?.country}` }}
+    </div>
+    <br />
     <div class="date text-block">Thu, March 16, 2023</div>
   </div>
 </template>
+
+<!-- -----style------- -->
 
 <style scoped lang="scss">
 @import "../assets/styles/main.scss";
@@ -22,7 +35,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: contain;
-  background-image: url("../assets/img/weather-main/thunderstorm.png");
+  // background-image: url("../assets/img/weather-main/thunderstorm.png");
 }
 
 .city {
@@ -63,6 +76,10 @@
 .weather-desc {
   &::before {
     background-image: url("/src/assets/img/weather.svg");
+  }
+
+  &::first-letter {
+    text-transform: uppercase;
   }
 }
 
