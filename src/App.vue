@@ -12,7 +12,7 @@ import HelloWorld from "./components/HelloWorld.vue";
     </a>
     <h1>Hello Vit</h1>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vue" />
 </template>
 
 <style scoped>
@@ -23,9 +23,9 @@ import HelloWorld from "./components/HelloWorld.vue";
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #0011ff);
 }
 .logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+  filter: drop-shadow(0 0 2em #eb0404aa);
 }
 </style>
