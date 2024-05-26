@@ -2,6 +2,17 @@
 const props = defineProps({
   weatherInfo: Object,
 });
+
+const date = new Date();
+
+let options = {
+  weekday: "short",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
+const today = new Intl.DateTimeFormat("en-EN", options).format(date);
 </script>
 
 <!-- -----template------- -->
@@ -19,7 +30,7 @@ const props = defineProps({
       {{ `${weatherInfo?.name} ${weatherInfo?.sys?.country}` }}
     </div>
     <br />
-    <div class="date text-block">Thu, March 16, 2023</div>
+    <div class="date text-block">{{ today }}</div>
   </div>
 </template>
 
