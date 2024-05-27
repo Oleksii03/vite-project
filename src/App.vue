@@ -6,6 +6,7 @@ import Highlights from "./components/Highlights.vue";
 
 const city = ref(" ");
 const weatherInfo = ref(null);
+let geo = navigator.geolocation;
 
 function getWeather() {
   fetch(`${BASE_URL}?q=${city.value}&appid=${API_KEY}&units=metric`)
@@ -19,7 +20,23 @@ function getWeather() {
     .catch((error) => console.log(error));
 }
 
-onMounted(getWeather);
+function getCurrentWeather() {
+  geo.getCurrentPosition((pos) => {
+    fetch(
+      `${BASE_URL}?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&appid=${API_KEY}&units=metric`
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => (weatherInfo.value = data))
+      .catch((error) => console.log(error));
+  });
+}
+
+onMounted(getCurrentWeather);
 </script>
 
 <template>
