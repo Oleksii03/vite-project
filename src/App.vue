@@ -6,7 +6,6 @@ import Highlights from "./components/Highlights.vue";
 
 const city = ref(" ");
 const weatherInfo = ref(null);
-let geo = navigator.geolocation;
 
 function getWeather() {
   fetch(`${BASE_URL}?q=${city.value}&appid=${API_KEY}&units=metric`)
@@ -21,6 +20,8 @@ function getWeather() {
 }
 
 function getCurrentWeather() {
+  let geo = navigator.geolocation;
+  console.log(geo);
   geo.getCurrentPosition((pos) => {
     fetch(
       `${BASE_URL}?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&appid=${API_KEY}&units=metric`
