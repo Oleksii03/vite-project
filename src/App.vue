@@ -61,14 +61,55 @@ function removeTodo(todo) {
 </script>
 
 <template>
-  <form @submit.prevent="addTodo">
-    <input v-model="newTodo" />
-    <button>Додати завдання</button>
-  </form>
-  <ul>
-    <li v-for="todo in todos" :key="todo.id">
-      {{ todo.text }}
-      <button @click="removeTodo(todo)">X</button>
-    </li>
-  </ul>
+  <div class="box">
+    <div>
+      <form @submit.prevent="addTodo">
+        <input v-model="newTodo" />
+        <button>Додати завдання</button>
+      </form>
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">
+          {{ todo.text }}
+          <button @click="removeTodo(todo)">X</button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
+
+<style lang="scss">
+@import "./assets/styles/main";
+
+.box {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+
+  & > div {
+    border: 4px solid #18191a;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #d7cbcb;
+    & > form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      border-bottom: 2px dashed #000;
+      padding-bottom: 10px;
+
+      & > input {
+        font-size: inherit;
+        border-radius: 5px;
+      }
+      & > button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        font-size: inherit;
+      }
+    }
+  }
+}
+</style>
