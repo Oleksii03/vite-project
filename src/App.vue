@@ -34,8 +34,13 @@
 
 <script setup>
 import { ref } from "vue";
+import Artem from "./components/Artem.vue";
 
 let id = 0;
+
+const key = ref(false);
+
+const box = ref("form-box");
 
 const newTodo = ref("");
 const todos = ref([
@@ -61,7 +66,7 @@ function removeTodo(todo) {
 </script>
 
 <template>
-  <div class="box">
+  <div :class="{ box }">
     <div>
       <form @submit.prevent="addTodo">
         <input v-model="newTodo" />
@@ -73,6 +78,8 @@ function removeTodo(todo) {
           <button @click="removeTodo(todo)">X</button>
         </li>
       </ul>
+      <button @click="key = !key">Оновити</button>
+      <Artem :key="key" />
     </div>
   </div>
 </template>
